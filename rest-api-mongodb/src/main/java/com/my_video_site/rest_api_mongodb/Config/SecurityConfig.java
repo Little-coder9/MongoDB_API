@@ -27,7 +27,7 @@ public class SecurityConfig {
                                         "/Movies/**",
                                         "/movie/{id}",            //  for movie endpoints
                                         "/searchMovies",
-                                        "/featuredMovies",
+                                        "/featuredMovies/**",
                                         "/addMovie",
                                         "/updateMovie/{id}",
                                         "/deleteMovie/{id}",
