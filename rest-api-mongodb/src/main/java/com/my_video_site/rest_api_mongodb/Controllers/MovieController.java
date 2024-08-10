@@ -6,19 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.my_video_site.rest_api_mongodb.Models.Movie;
 import com.my_video_site.rest_api_mongodb.Services.MovieService;
 
+
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class MovieController {
 
@@ -31,7 +26,7 @@ public class MovieController {
         return ResponseEntity.ok(movieService.getAllMovies());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/movie/{id}")
     public ResponseEntity<Movie> getMovieById(@PathVariable String id) {
         Movie movie = movieService.getMovieById(id);
         if (movie != null) {
@@ -41,7 +36,7 @@ public class MovieController {
         }
     }
 
-    @GetMapping("/movieSearch")
+    @GetMapping("/searchMovies")
     public ResponseEntity<List<Movie>> getMoviesByTitle(@RequestParam String title) {
         if (title == null || title.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -56,7 +51,7 @@ public class MovieController {
 
     }
 
-    @GetMapping("/featured")
+    @GetMapping("/featuredMovies")
     public ResponseEntity<List<Movie>> getFeaturedMovies(@RequestParam boolean featured) {
         List<Movie> featuredMovies = movieService.searchFeaturedMovies(featured);
         if (featuredMovies.isEmpty()) {
@@ -71,7 +66,7 @@ public class MovieController {
     })
     public ResponseEntity<?> addMovie(@RequestBody Movie movie){
         if (movie.getTitle() == null || movie.getTitle().isEmpty()) {
-            return new ResponseEntity<>("At least title required", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Title required", HttpStatus.BAD_REQUEST);
         }
 
         Movie newMovie = movieService.insertIntoMovies(movie);
@@ -79,7 +74,7 @@ public class MovieController {
         return new ResponseEntity<>(newMovie, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/updateMovie/{id}")
     public ResponseEntity<?> updateMovie(@PathVariable String id, @RequestBody Movie movie) {
         Movie movieFound = movieService.getMovieById(id);
         if (movieFound != null) {
@@ -89,7 +84,7 @@ public class MovieController {
         return new ResponseEntity<>("Movie not found", HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteMovie/{id}")
     public ResponseEntity<?> deleteMovie(@PathVariable String id) {
         boolean deleted = movieService.deleteMovieById(id);
         if (deleted) {

@@ -20,22 +20,21 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public boolean registerUser(User user) {
+    public User registerUser(User user) {
         user.setEmail(user.getEmail());
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
-        return true;
+        return userRepository.save(user);
     }
 
     public User getUserById(String id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    public boolean authenticateUser(String email, String password) {
+    public User authenticateUser(String email, String password) {
         User user = userRepository.findByEmail(email);
-        if (user != null) {
-            return bCryptPasswordEncoder.matches(password, user.getPassword());
+        if (user != null && bCryptPasswordEncoder.matches(password, user.getPassword())) {
+            return user;
         }
-        return false;
+        return null;
     }
 }

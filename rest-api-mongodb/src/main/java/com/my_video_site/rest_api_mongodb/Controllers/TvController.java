@@ -11,13 +11,14 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class TvController {
 
     @Autowired
     private TvService tvService;
 
-    @GetMapping("/Tvs")
+    @GetMapping("/TVShows")
     public ResponseEntity<List<TVShows>> getAllTvShows() {
         return ResponseEntity.ok(tvService.getAllTVShows());
     }
@@ -32,13 +33,13 @@ public class TvController {
         }
     }
 
-    @GetMapping("/tvSearch")
-    public ResponseEntity<List<TVShows>> getTVShowsByTitle(@RequestParam String Title) {
-        if (Title == null || Title.isEmpty()) {
+    @GetMapping("/searchTv")
+    public ResponseEntity<List<TVShows>> getTVShowsByTitle(@RequestParam String title) {
+        if (title == null || title.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        List<TVShows> movies = tvService.searchTVShowsByTitle(Title);
+        List<TVShows> movies = tvService.searchTVShowsByTitle(title);
         if (movies.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -48,7 +49,7 @@ public class TvController {
     }
 
 
-    @GetMapping("/tvFeatured")
+    @GetMapping("/featuredTv")
     public ResponseEntity<List<TVShows>> getFeaturedTVShows(@RequestParam boolean featured) {
         List<TVShows> featuredTVShows = tvService.searchFeaturedTVShows(featured);
         if (featuredTVShows.isEmpty()) {
@@ -58,7 +59,7 @@ public class TvController {
         return new ResponseEntity<>(featuredTVShows, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/addTVShow", consumes = {
+    @PostMapping(value = "/addTv", consumes = {
             MediaType.APPLICATION_JSON_VALUE
     })
     public ResponseEntity<?> addTVShow(@RequestBody TVShows TVShows){
@@ -71,7 +72,7 @@ public class TvController {
         return new ResponseEntity<>(newTVShow, HttpStatus.CREATED);
     }
 
-    @PutMapping("/tv/{id}")
+    @PutMapping("/updateTv/{id}")
     public ResponseEntity<?> updateTVShow(@PathVariable String id, @RequestBody TVShows TVShows) {
         TVShows TVShowFound = tvService.getTVShowById(id);
         if (TVShowFound != null) {
@@ -81,7 +82,7 @@ public class TvController {
         return new ResponseEntity<>("TVShows not found", HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/tv/{id}")
+    @DeleteMapping("/deleteTv/{id}")
     public ResponseEntity<?> deleteTVShow(@PathVariable String id) {
         boolean deleted = tvService.deleteTVShowById(id);
         if (deleted) {

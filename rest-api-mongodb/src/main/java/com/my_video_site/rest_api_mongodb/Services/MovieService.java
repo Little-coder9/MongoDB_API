@@ -65,7 +65,6 @@ public class MovieService {
             if (movie.getType() != null) existingMovie.setType(movie.getType());
             if (movie.getImages() != null) existingMovie.setImages(movie.getImages());
             if (movie.getFeatured() != null) existingMovie.setFeatured(movie.getFeatured());
-            if (movie.getPrice() != 0.0) existingMovie.setPrice(movie.getPrice());
             if (movie.getRentPrice() != 0.0) existingMovie.setRentPrice(movie.getRentPrice());
             if (movie.getPurchasePrice() != 0.0) existingMovie.setPurchasePrice(movie.getPurchasePrice());
 

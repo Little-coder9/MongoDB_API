@@ -26,15 +26,11 @@ public class TVShows {
     private String language;
     private String country;
     private String poster;
-    private String metascore;
     private String imdbRating;
-    private String imdbVotes;
-    private String imdbID;
     private String totalSeasons;
     private String type;
     private List<String> images;
     private Boolean featured;
-    private double price;
     private double rentPrice;
     private double purchasePrice;
 

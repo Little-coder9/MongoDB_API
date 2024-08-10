@@ -65,7 +65,6 @@ public class TvService {
             if (TVShows.getType() != null) existingTVShow.setType(TVShows.getType());
             if (TVShows.getImages() != null) existingTVShow.setImages(TVShows.getImages());
             if (TVShows.getFeatured() != null) existingTVShow.setFeatured(TVShows.getFeatured());
-            if (TVShows.getPrice() != 0.0) existingTVShow.setPrice(TVShows.getPrice());
             if (TVShows.getRentPrice() != 0.0) existingTVShow.setRentPrice(TVShows.getRentPrice());
             if (TVShows.getPurchasePrice() != 0.0) existingTVShow.setPurchasePrice(TVShows.getPurchasePrice());
 

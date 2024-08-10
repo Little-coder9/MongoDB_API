@@ -29,7 +29,6 @@ public class Movie {
     private String type;
     private List<String> images;
     private Boolean featured;
-    private double price;
     private double rentPrice;
     private double purchasePrice;
 
