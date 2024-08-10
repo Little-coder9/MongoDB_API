@@ -19,8 +19,11 @@ import java.util.Map;
 
 import static javax.crypto.Cipher.SECRET_KEY;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "https://video-streaming-site-3ml5yjfu3-netra-bahadur-ranas-projects.vercel.app/"})
+
 @RestController
+
 public class UserController {
 
     @Autowired

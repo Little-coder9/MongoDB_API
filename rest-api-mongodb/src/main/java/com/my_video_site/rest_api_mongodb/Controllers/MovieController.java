@@ -13,7 +13,8 @@ import com.my_video_site.rest_api_mongodb.Models.Movie;
 import com.my_video_site.rest_api_mongodb.Services.MovieService;
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "https://video-streaming-site-3ml5yjfu3-netra-bahadur-ranas-projects.vercel.app/"})
 @RestController
 public class MovieController {
 
