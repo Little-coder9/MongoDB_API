@@ -19,6 +19,7 @@ import com.my_video_site.rest_api_mongodb.Services.TvService;
 
 public class TvController {
 
+    @Autowired
     private TvService tvService;
 
     @GetMapping("/TVShows")
