@@ -13,7 +13,7 @@ import com.my_video_site.rest_api_mongodb.Models.TVShows;
 import com.my_video_site.rest_api_mongodb.Services.TvService;
 
 
-@CrossOrigin(origins = "https://video-streaming-site-chi.vercel.app")
+@CrossOrigin(origins = {"http://localhost:3000", "https://video-streaming-site-chi.vercel.app"})
 
 @RestController
 

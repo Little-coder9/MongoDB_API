@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface TvRepository extends MongoRepository<TVShows, String> {
 
-    List<TVShows> findByTitleContaining(String title);
+    List<TVShows> findByTitleContainingIgnoreCase(String title);
     List<TVShows> findByFeatured(boolean featured);
     void deleteTVShowById(String id);
 

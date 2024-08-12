@@ -27,7 +27,7 @@ public class MovieService {
     }
 
     public List<Movie> searchMoviesByTitle(String title) {
-        return movieRepository.findByTitleContaining(title);
+        return movieRepository.findByTitleContainingIgnoreCase(title);
     }
 
     public List<Movie> searchFeaturedMovies(boolean featured) {

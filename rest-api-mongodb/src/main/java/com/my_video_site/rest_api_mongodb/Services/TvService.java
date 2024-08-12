@@ -27,7 +27,7 @@ public class TvService {
     }
 
     public List<TVShows> searchTVShowsByTitle(String title) {
-        return tvRepository.findByTitleContaining(title);
+        return tvRepository.findByTitleContainingIgnoreCase(title);
     }
 
     public List<TVShows> searchFeaturedTVShows(boolean featured) {

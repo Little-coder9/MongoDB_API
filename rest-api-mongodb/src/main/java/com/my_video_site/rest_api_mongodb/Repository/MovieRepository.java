@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface MovieRepository extends MongoRepository<Movie, String> {
-    List<Movie> findByTitleContaining(String title);
+    List<Movie> findByTitleContainingIgnoreCase(String title);
     List<Movie> findByFeatured(boolean featured);
     void deleteMoviesById(String id);
 }
