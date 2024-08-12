@@ -18,6 +18,7 @@ public class SecurityConfig {
         return new JwtUtil();
     }
 
+    @SuppressWarnings("removal")
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
