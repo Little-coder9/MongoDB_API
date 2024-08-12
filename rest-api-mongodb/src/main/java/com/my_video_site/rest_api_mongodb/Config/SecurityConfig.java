@@ -19,7 +19,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain defaultFilterChain(HttpSecurity httpSecurity) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth->
@@ -27,7 +27,7 @@ public class SecurityConfig {
                                         "/Movies/**",
                                         "/movie/{id}",            //  for movie endpoints
                                         "/searchMovies",
-                                        "/featuredMovies",
+                                        "/featuredMovies/**",
                                         "/addMovie",
                                         "/updateMovie/{id}",
                                         "/deleteMovie/{id}",
