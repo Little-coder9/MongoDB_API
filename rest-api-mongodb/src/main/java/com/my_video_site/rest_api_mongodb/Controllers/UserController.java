@@ -1,26 +1,23 @@
 package com.my_video_site.rest_api_mongodb.Controllers;
 
 
-import com.my_video_site.rest_api_mongodb.Config.JwtUtil;
-import com.my_video_site.rest_api_mongodb.Models.Movie;
-import com.my_video_site.rest_api_mongodb.Models.User;
-import com.my_video_site.rest_api_mongodb.Services.UserService;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import lombok.Data;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.my_video_site.rest_api_mongodb.Config.JwtUtil;
+import com.my_video_site.rest_api_mongodb.Models.User;
+import com.my_video_site.rest_api_mongodb.Services.UserService;
 
-import static javax.crypto.Cipher.SECRET_KEY;
+import lombok.Data;
 
-//@CrossOrigin(origins = "http://localhost:3000")
-//@CrossOrigin(origins = {"http://localhost:3000", "https://video-streaming-site-3ml5yjfu3-netra-bahadur-ranas-projects.vercel.app/"})
+
+@CrossOrigin(origins = "https://video-streaming-site-chi.vercel.app")
 
 @RestController
 

@@ -1,7 +1,7 @@
 package com.my_video_site.rest_api_mongodb.Controllers;
 
-import com.my_video_site.rest_api_mongodb.Models.TVShows;
-import com.my_video_site.rest_api_mongodb.Services.TvService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -9,15 +9,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
+import com.my_video_site.rest_api_mongodb.Models.TVShows;
+import com.my_video_site.rest_api_mongodb.Services.TvService;
 
-@CrossOrigin(origins = "https://video-streaming-site-3ml5yjfu3-netra-bahadur-ranas-projects.vercel.app")
+
+@CrossOrigin(origins = "https://video-streaming-site-chi.vercel.app")
 
 @RestController
 
 public class TvController {
 
-    @Autowired
     private TvService tvService;
 
     @GetMapping("/TVShows")
